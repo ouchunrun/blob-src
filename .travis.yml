@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- '8'
+script:
+- hexo g
+- hexo d
+before_install:
+- openssl aes-256-cbc -K $encrypted_24b1374af468_key -iv $encrypted_24b1374af468_iv
+  -in .travis/github_deploy_key.enc -out ~/.ssh/github_deploy_key -d
+- chmod 600 ~/.ssh/github_deploy_key
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/github_deploy_key
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name '欧春润'
+- git config --global user.email '1402327769@qq.com'
+- npm install hexo-cli
+addons:
+  ssh_known_hosts: 192.30.253.112
