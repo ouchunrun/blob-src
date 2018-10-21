@@ -5,7 +5,7 @@ script:
 - hexo g
 - hexo d
 before_install:
-- openssl aes-256-cbc -K $encrypted_24b1374af468_key -iv $encrypted_24b1374af468_iv
+- openssl aes-256-cbc -K $encrypted_c0e7a010631d_key -iv $encrypted_c0e7a010631d_iv
   -in .travis/github_deploy_key.enc -out ~/.ssh/github_deploy_key -d
 - chmod 600 ~/.ssh/github_deploy_key
 - eval $(ssh-agent)
