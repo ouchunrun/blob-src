@@ -13,6 +13,7 @@ before_install:
 - cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name '欧春润'
 - git config --global user.email '1402327769@qq.com'
+- npm install
 - npm install hexo-cli
 addons:
   ssh_known_hosts: 192.30.253.112
