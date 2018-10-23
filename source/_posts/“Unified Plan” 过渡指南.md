@@ -158,16 +158,16 @@ Unified Plan 里面：
 
 ### MediaStreamTrack.onended No Longer Fires
 
-Because remote tracks may be muted but are never removed, MediaStreamTrack.onended no
-longer fires. Instead, rely on MediaStreamTrack.onmute to discover if a track is removed
+因为remote tracks可能被muted，但是永远不会被删除，MediaStreamTrack.onended 不会再被触发。相应的，使用 MediaStreamTrack.onmute来检查track是否被删除。
+
 
 ### Legacy APIs
-RTCPeerConnection.addStream() and removeStream() are non-standard APIs. These are shimmed on top of RTCPeerConnection.addTrack() and removeTrack() for backwards
-compatibility reasons. They will continue to work in Unified Plan, but standardized APIs should be preferred.
 
-Likewise, the events “addstream” and “removestream” fired on an RTCPeerConnection (with event handlers “onaddstream” and “onremovestream”) are legacy APIs that are not in the
-standard. For backwards compatibility reasons they are supported in Unified Plan as of M71, but RTCPeerConnection.ontrack, MediaStreamTrack.onmute and MediaStream.onaddtrack/onremovetrack should be preferred.
-    
+RTCPeerConnection.addStream() 和 removeStream() 不是标准的 APIs。由于向后兼容的原因，它们在RTCPeerConnection.addTrack()和removeTrack()之上填充。
+在Unified Plan中会继续使用，但是使用标准的APIs会更好。
+
+同样地，在RTCPeerConnection上触发的事件"addstream"和"removestream"(使用事件处理程序"onaddstream"和"onremovestream")是标准中没有的遗留api。
+由于向后兼容的原因，在M71的Unified Plan中支持它们，但是，RTCPeerConnection.ontrack, MediaStreamTrack.onmute 和 MediaStream.onaddtrack/onremovetrack更好。
 
 
 

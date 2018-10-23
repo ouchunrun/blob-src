@@ -91,8 +91,8 @@ disqus: false
 #5 commenthub
 commenthub:
   enable: true
-  id: 18205629 
-  site: http://ouchunrun.github.io 
+  id: 18210396
+  site: http://ouchunrun.github.io
 
 # 样式定制 - 一般不需要修改，除非有很强的定制欲望…
 style:
@@ -117,11 +117,11 @@ smart_menu:
   aboutme: '关于我'
 
 friends:
-  这里有欧的故事: http://suadminwen.github.io
-  友情链接2: http://localhost:4000/
-  友情链接3: http://localhost:4000/
-  友情链接4: http://localhost:4000/
-  友情链接5: http://localhost:4000/
-  友情链接6: http://localhost:4000/
+  这里有TA的故事: http://suadminwen.github.io
+  webrtchacks: https://webrtchacks.com/
+  推酷: https://www.tuicool.com/
+  WebRTC_API: https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API
+  SIP && SDP media-types: https://www.iana.org/assignments/media-types/media-types.xhtml
+  w3c: https://w3c.github.io
 
-aboutme: 很惭愧<br><br>只做了一点微小的工作<br>谢谢大家
+aboutme: 不停寻找<br><br>不停改变<br><br>管他经年以后<br>但愿初心不改
