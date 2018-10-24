@@ -40,8 +40,8 @@ Chrome M71：[chrome://flags](chrome://flags/) contain the experiment `WebRTC: U
 ### 特征检测
 
 M69 增加了 `transceivers` ，但只有在使用“unified-plan”时才支持它们。
-检查`addTransceiver()` 是否在默认构造的RTCPeerConnection上抛出异常是一种检查“unified-plan”是否为默认的特征检测方法。 
-在M70中，添加了`getConfiguration()`，允许您显式检查sdpSemantics的值，类似于chrome：// webrtc-internals /中已经显示的值。 
+检查`addTransceiver()` 是否在默认构造的RTCPeerConnection上抛出异常是一种检查“unified-plan”是否为默认行为的特征检测方法。 
+在M70中，添加了`getConfiguration()`，允许显式检查sdpSemantics的值，类似于chrome：// webrtc-internals /中已经显示的值。 
 
 
 ## Plan-b 和 Unified-Plan 的区别
@@ -126,11 +126,11 @@ Unified Plan offer：
   收发的方向可以在“inactive”, “sendonly”, “recvonly” 和 “sendrecv”，之间根据需求切换。
 
 
-- 将 track 使用addTrack() 或addTransceiver() 的对等连接时，收发器创建（或重复使用）并将轨道附加到发件人。
-因为收发器可能是用于接收，始终创建接收轨道并将其连接到接收器。不像发送方，接收方的跟踪始终存在且无法替换，但默认情况下静音。
+- 将 track 使用addTrack() 或addTransceiver() 添加到peer connection时，transceiver会被创建（或重复使用），并将track附加到sender.。
+因为transceiver可能是用于接收，receiving track始终被创建并连接到receiver.。不像发送方，receiver’s track始终存在且无法替换，但默认为muted状态。
 
-- setLocalDescription()和setRemoteDescription()久地将transceivers连接到m行，通过将transceiver.mid的值设置为m = section的mid。
-这是一个可以的字符串标识符，两个endpoints用来关联transceivers，以便知道哪个是哪个。
+- setLocalDescription()和setRemoteDescription()永久地将transceivers连接到m行，通过将transceiver.mid的值设置为m = section的mid。
+这是一个字符串标识符，两端可以用来关联transceivers，以便知道哪个是哪个。
 
 
 ### Local 和 Remote 的 Track IDs 不匹配
@@ -142,7 +142,8 @@ Unified Plan offer：
 **对于 Unified Plan：**
 
 - senders 和 receivers 是成对产生的。`transceiver.receiver.track`可能在remote SDP提供track之前就创建了。所以，在RTCPeerConnection.ontrack触发的时候，并不能保证已经有一个和发送端所匹配的ID。
-- 此外，因为addTransceiver() 和 replaceTrack()，同一个track可能被发送多次。Track IDs具有误导性。取而代之的，transceiver.mid可以用来关联local 和 remote tracks。你不得不在知道mid之前设置setLocalDescription(answer)。
+- 此外，因为addTransceiver() 和 replaceTrack()，同一个track可能被发送多次，Track IDs具有误导性。取而代之的，transceiver.mid可以用来关联local 和 remote tracks。
+    你可能不得不在知道mid之前设置setLocalDescription(answer)。
     
     
     
@@ -154,7 +155,7 @@ Plan B 里面：
 
 Unified Plan 里面：
 
-- removeTrack()改变了transceiver的收发方向，取消sender’s track。协商期间，transceiver’s改变收发方向，同时mute the track，但是never removed。并且改track还可能再次复用。
+- removeTrack()改变了transceiver的收发方向，取消sender’s track。协商期间，transceiver’s改变收发方向，同时mute the track，但是从不 removed。并且这个被删除得track还可能再次复用。
 
 ### MediaStreamTrack.onended No Longer Fires
 
