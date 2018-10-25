@@ -390,7 +390,10 @@ RTCPeerConnection.addStream() 和 removeStream() 不是标准的 APIs。由于�
 由于向后兼容的原因，在M71的Unified Plan中支持它们，但是，RTCPeerConnection.ontrack, MediaStreamTrack.onmute 和 MediaStream.onaddtrack/onremovetrack更好。
 
 
-
+addStream has become addTrack(MediaStreamTrack track, MediaStream... streams), as discussed in DC. addTrack returns a RTCRtpSender.
+removeStream has become removeTrack; removeTrack takes a RTCRtpSender.
+onaddstream has become onaddtrack; onremovestream has been removed (now, .onended is fired).
+getLocalStreams/getRemoteStreams -> getSenders/getReceivers.
 
 
 

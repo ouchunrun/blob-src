@@ -1,13 +1,14 @@
 ---
 title: Edge 视频分辨率控制研究
 date: 2018-10-23
-tags: [WebRTC, 浏览器，Edge] 
+tags: [WebRTC, 浏览器, Edge] 
 ---
+
 
 #### **研究的主要目的**
 >本次研究的主要目的是测试能否在**Edge**上控制分辨率，研究内容主要为以下两个方面：
 
-- 1、GUM取流时控制帧率、分辨率。
+>- 1、GUM取流时控制帧率、分辨率。
 - 2、GUM发流时通过`profile-level-id`控制帧率、分辨率。
 
 
@@ -17,7 +18,6 @@ tags: [WebRTC, 浏览器，Edge]
 > - Aoni(奥尼) HD Camera (1bcf:2283) 和 Gsou Audio Webcam (1871:0149) 极速 （这两款设备的设备支持能力相同）
 > - Logitech Webcam C930e (046d:0843)
 > 注：因为edge暂时没有提供获取原生设备能力的接口，所以目前使用Chrome的`chrome://media-internals`页面工具列出原生设备的支持能力作为测试参考数据。
-
 
 <!--more-->
 
@@ -59,13 +59,21 @@ var constraints = {
 
 >  **（1）Edge | USB2.0 Camera (1871:0101)大河爱沙**
 
- 使用Chrome的chrome://media-internals页面工具可以列出**大河爱莎**原生设备的支持能力。通过Constraints设置resolution && FrameRate验证结果如图所示。
+ 使用Chrome的chrome://media-internals页面工具可以列出**大河爱莎**原生设备的支持能力，如图1所示。
 
-![edge 大河爱沙 ](../../images/edge.jpg)
+
+![74167fa4bbfc8cb190f8f46619af4c9a.png](https://i.loli.net/2018/10/25/5bd1b734bc60c.png)
+
+
+<center>图1 、**大河爱莎** 设备支持能力</center>
+
+通过Constraints设置resolution && FrameRate验证结果如图2所示。
+
+![2.png](https://i.loli.net/2018/10/25/5bd1b8030a15c.png)
 
 **注**：图中所列出的`framePerSecond`的值均为 **近似值** 而非精确值。
 
-<center>图1、**大河爱莎** 分辨率、帧率控制验证结果</center>
+<center>图2、**大河爱莎** 分辨率、帧率控制验证结果</center>
 
 **结果分析**：GUM尝试获取原生设备支持的能力时，`resolution=160x120、resolution=176x144`是获取不到的；GUM尝试获取非原生设备支持的能力时，均`fialed`。
 
@@ -73,13 +81,20 @@ var constraints = {
 
 > **（2）Edge | Aoni(奥尼) HD Camera** 
 
-通过Constraints设置resolution && FrameRate验证结果如图:
+ Aoni HD Camera (1bcf:2283)在chrome上的支持能力如图3所示。
 
-![aoni奥尼验证](../../images/edge-aoni.jpg)
+![333.png](https://i.loli.net/2018/10/25/5bd1b81d52153.png)
+
+<center>图3、Aoni HD Camera在chrome 的支持能力</center>
+
+通过Constraints设置resolution && FrameRate验证结果如图4。
+
+
+![44.png](https://i.loli.net/2018/10/25/5bd1b81d64b4f.png)
 
 **注**：图中所列出的`framePerSecond`的值均为 **近似值** 而非精确值。
 
-<center>图2、**aoni奥尼** 分辨率、帧率控制验证结果</center>
+<center>图4、**aoni奥尼** 分辨率、帧率控制验证结果</center>
 
 **结果分析**：
 
@@ -92,7 +107,11 @@ var constraints = {
 
 **验证设备：Logitech Webcam C930e (046d:0843)** 支持能力见图9。
  
-当设置的Constraints不在原生设备支持能力之内时，并没有触发OverconstrainedError提示窗，而是继续取得一个stream，并建立p2p连接。
+当设置的Constraints不在原生设备支持能力之内时，并没有触发OverconstrainedError提示窗，而是继续取得一个stream，并建立p2p连接，如图5所示。
+
+![555.png](https://i.loli.net/2018/10/25/5bd1b81f1d3d8.png)
+
+<center>图5、帧率超出限制</center>
 
 **结果分析**：获取不到指定的contraints时，edge不报错，其他两个camera验证结果相同，其他分辨率、帧率验证结果相同。
 
@@ -112,10 +131,10 @@ local m=video行如下：
 m=video 9 UDP/TLS/RTP/SAVPF 122 107 100 99 96 12
 ```
 
-未改变的local video编解码器优先级顺序及实际使用情况如图3：
+未改变的local video编解码器优先级顺序及实际使用情况如图6：
 
-![title](../../images/desc-origin.jpg)
-<center>图3、local video编解码器优先级顺序及实际使用情况</center>
+![66.png](https://i.loli.net/2018/10/25/5bd1b81d6026e.png)
+<center>图6、local video编解码器优先级顺序及实际使用情况</center>
 
 通过replace改变local video m行编码器优先级：
 
@@ -124,9 +143,10 @@ desc.sdp = desc.sdp.replace("m=video 9 UDP/TLS/RTP/SAVPF 122 107 100 99 96 12", 
 ```
 
 
-改变后的video编解码器优先级顺序及实际使用情况如图4：
-![title](../../images/desc-change.jpg)
-<center>图4、更改后local video编解码器优先级顺序及实际使用情况</center>
+改变后的video编解码器优先级顺序及实际使用情况如图7：
+![7.png](https://i.loli.net/2018/10/25/5bd1b81d671e4.png)
+<center>图7、更改后local video编解码器优先级顺序及实际使用情况</center>
+ 
  
 
 结论：改变 `m`行中编解码器的先后顺序，可以改变编解码器的优先级。
@@ -157,13 +177,13 @@ desc.sdp = desc.sdp.replace("a=fmtp:107 profile-level-id=42C02A;packetization-mo
 
 ```
 
-通过replace方法改变local 或remoted的profile-level-id的level-idc为下表中各值，结果如图5所示：
+通过replace方法改变local 或remoted的profile-level-id的level-idc为下表中各值，结果如图8所示：
 
-![level_id更改](../../images/profile-level-id.jpg)
+![888.png](https://i.loli.net/2018/10/25/5bd1b81d63ef5.png)
 
 **注**：图中所列出的`framePerSecond`的值均为 **近似值** 而非精确值。
 
-<center>图5、level_id更改测试</center>
+<center>图8、level_id更改测试</center>
 
 **结果分析**：profile-level-id设置无效
 
@@ -184,7 +204,6 @@ desc.sdp = desc.sdp.replace("a=fmtp:107 profile-level-id=42C02A;packetization-mo
 
 > - [WebRTC摄像头分辨率查询器](https://webrtchacks.github.io/WebRTC-Camera-Resolution/)
 > - [chrome://media-internals](chrome://media-internals/)
-
 
 
 
