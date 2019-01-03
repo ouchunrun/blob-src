@@ -62,6 +62,8 @@ var Constraints = {
 
 但是，用exact的时候，，如果不存在支持精确分辨率的摄像头，则返回的promise将会被拒绝并给出OverconstrainedError错误，而且不会提醒用户。
 
+当exact和max同时存在时，以exact为准！
+
 那些没有min，max和exact这些关键字描述的值会被视为“ideal”（理想）值，它本身就是一个关键字，但不是强制性的。也就是说，下面两种写法是相同的：
 
 ```
