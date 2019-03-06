@@ -18,6 +18,8 @@ Using Native WebRTC simulcast support in Chrome：
 - Step five: Increase the bandwidth
 
 
+<!--more-->
+
 
 
 ### WebRTC Simulcast on Firefox：

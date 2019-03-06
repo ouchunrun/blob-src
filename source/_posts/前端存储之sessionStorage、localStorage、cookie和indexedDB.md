@@ -18,6 +18,8 @@ localStorage、sessionStorage、Cookie共同点：都是保存在浏览器端，
 - cookie数据始终在同源的http请求中携带(即使不需要)，即cookie在浏览器和服务器间来回传递。 
 - sessionStorage和loaclStorage不会自动把数据发给服务器，仅在本地保存。 
 
+<!--more-->
+
 2》数据大小不同 
 
 - cookie存放数据大小为4K左右 。有个数限制（各浏览器不同），一般不能超过20个。 因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。 
