@@ -6,4 +6,11 @@ selenium-debug.log
 test/unit/coverage
 test/e2e/reports
 source/assets/
+/bin
+/.project
+/.project.bak
+/.externalToolBuilders/
+/.settings/
 .idea/
+
+
