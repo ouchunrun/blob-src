@@ -196,13 +196,13 @@ gulp.task("clean", function(){
         .pipe(clean());
 })
 ```
----
+
 
 ### 压缩
 
 **1、 gulp-uglify**
-
 描述：压缩js文件大小。
+
 ```
 var uglify = require("gulp-uglify");
 
@@ -217,6 +217,7 @@ gulp.src('./hello.js')
         preserveComments: 'all'     // 保留所有注释
     }))
     .pipe(gulp.dest('./dist'))
+    
 ```    
 
 ## 其他
