@@ -1,6 +1,6 @@
 ---
 title: gulp前端工程化入门
-date: 2018-3-19
+date: 2019-3-28
 tags: [gulp, 打包工具] 
 ---
 
@@ -217,8 +217,8 @@ gulp.src('./hello.js')
         preserveComments: 'all'     // 保留所有注释
     }))
     .pipe(gulp.dest('./dist'))
-    
-```    
+```
+
 
 ## 其他
 
@@ -255,6 +255,7 @@ gulp.task('default', ['one', 'two']);
 ```
 
 2、文件按顺序压缩
+
 ```
 var foreach = require('gulp-foreach');
 
@@ -273,6 +274,7 @@ gulp.task('minjs', function () {
 
 
 3、sourceMap文件生成
+
 ```
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -318,7 +320,7 @@ gulp.task('minjs', function () {
 1、改变文件名称
 
 - 这种方式必须同时改变资源的文件名和html里面引用的文件名，并且一一对应
-- 可以用 `gulp-rev gulp-rev-collector` 两个插件实现安装：
+- 可以用 *gulp-rev gulp-rev-collector* 两个插件实现安装：
 ```
 npm install --save-dev gulp-rev gulp-rev-collector
 ```
@@ -329,7 +331,7 @@ npm install --save-dev gulp-rev gulp-rev-collector
 }
 ```
 
-修改`gulp-rev`的配置也能实现`main.min.js?61e0be79`的输出格式，但是比较麻烦，用`gulp-rev-dxb`插件就可以了！
+修改*gulp-rev*的配置也能实现*main.min.js?61e0be79*的输出格式，但是比较麻烦，用`gulp-rev-dxb`插件就可以了！
 
 配置的修改可以参考这里：[gulp版本号?v=](https://blog.csdn.net/m0_37285193/article/details/81566243)
 
