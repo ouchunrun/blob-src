@@ -10,6 +10,8 @@ tags: [WebRTC, stream, track]
 - type： MediaStreamEvent 
 - remote peer 在当前连接添加新的MediaStream时，会触发local peer的该事件。
 
+<!--more-->
+
 2、onaddtrack
 
 - 当任何类型的track添加到媒体流时会触发该事件。
@@ -23,7 +25,7 @@ tags: [WebRTC, stream, track]
 
 > ps: 都是对接受到的stream或track进行监听，本端添加不会触发自己的上述事件
 
-<!--more-->
+
 
 
 ### onremovestream

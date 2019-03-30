@@ -16,6 +16,8 @@ npm init
 npm install --save-dev gulp
 ```
 
+<!--more-->
+
 全局安装 gulp：：
 ```
 npm install --g gulp

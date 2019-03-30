@@ -11,8 +11,10 @@ tags: [WebRTC, deviceId]
 
  # **示例**
 
-// 列出摄像头和麦克风
+列出摄像头和麦克风
+<!--more-->
 
+```
     navigator.mediaDevices.enumerateDevices()
     .then(function(devices) {
       devices.forEach(function(device) {
@@ -23,8 +25,8 @@ tags: [WebRTC, deviceId]
     .catch(function(err) {
       console.log(err.name + ": " + err.message);
     });
+```
 
-<!--more-->
 
 直接在控制台输入如上代码，就可以测试
 

@@ -11,6 +11,7 @@ tags: [WebRTC, 浏览器, Edge]
 >- 1、GUM取流时控制帧率、分辨率。
 - 2、GUM发流时通过`profile-level-id`控制帧率、分辨率。
 
+<!--more-->
 
 #### **验证的设备：**
 
@@ -19,7 +20,7 @@ tags: [WebRTC, 浏览器, Edge]
 > - Logitech Webcam C930e (046d:0843)
 > 注：因为edge暂时没有提供获取原生设备能力的接口，所以目前使用Chrome的`chrome://media-internals`页面工具列出原生设备的支持能力作为测试参考数据。
 
-<!--more-->
+
 
 #### **验证结果：**
 

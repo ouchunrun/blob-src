@@ -11,6 +11,8 @@ tags: [JS, 浏览器, 本地存储]
 
 localStorage、sessionStorage、Cookie共同点：都是保存在浏览器端，且同源的。
 
+<!--more-->
+
 ### 二、不同点： 
 
 1》传递方式不同 
@@ -18,7 +20,6 @@ localStorage、sessionStorage、Cookie共同点：都是保存在浏览器端，
 - cookie数据始终在同源的http请求中携带(即使不需要)，即cookie在浏览器和服务器间来回传递。 
 - sessionStorage和loaclStorage不会自动把数据发给服务器，仅在本地保存。 
 
-<!--more-->
 
 2》数据大小不同 
 

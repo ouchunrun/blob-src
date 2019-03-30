@@ -14,6 +14,7 @@ WebRTC规范多年来不断发展，在API等各方面都做了很多更改。�
 - 依赖于本地和远程 track IDs 匹配的假设。
 - Munges SDP，使用 MCUs 或 SFUs 或以其他方式修改SDP或使用非Chrome生成的SDP。
 
+<!--more-->
 
 ### SDP格式的控制
 
@@ -23,7 +24,7 @@ WebRTC规范多年来不断发展，在API等各方面都做了很多更改。�
       new RTCPeerConnection({sdpSemantics:'unified-plan'});
       new RTCPeerConnection({sdpSemantics:'plan-b'});
 
-<!--more-->
+
 
 除非你的应用程序为（unified-plan和plan-b）两种情况做好准备，否则建议明确地设置sdpSemantics来避免chrome的默认行为发生变化带来的影响。
 

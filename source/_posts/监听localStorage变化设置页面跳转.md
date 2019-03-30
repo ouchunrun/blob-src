@@ -1,12 +1,15 @@
 ---
 title: 监听localStorage变化设置页面跳转
-date: 2018-3-18
+date: 2019-3-18
 tags: [JS, localStorage] 
 ---
 
 “当同源页面的某个页面修改了localStorage,其余的同源页面只要注册了storage事件，就会触发” 
 
 同页面监听，重写localStorage的方法，抛出自定义事件，根据localStorage的值判断，进行不同的操作：
+
+
+<!--more-->
 
 ```
  var orignalSetItem = localStorage.setItem;
