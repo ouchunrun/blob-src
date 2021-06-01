@@ -6,9 +6,8 @@ date: 2018-10-22 18:50:32
 ### web前端开发工程师
 
 **地点：** 杭州
-**电话：** 15823125357
 **邮箱：** 1402327769@qq.com
-**博客：** https://ouchunrun.github.io
+**github：** https://github.com/ouchunrun
 
 ### 教育背景
 
