@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - '8'
 script:
-- hexo g
-- hexo d
+- node_modules/hexo/bin/hexo g
+- node_modules/hexo/bin/hexo d
 before_install:
 - openssl aes-256-cbc -K $encrypted_c0e7a010631d_key -iv $encrypted_c0e7a010631d_iv
   -in .travis/github_deploy_key.enc -out ~/.ssh/github_deploy_key -d
